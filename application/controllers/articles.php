@@ -14,18 +14,12 @@ class Articles extends CI_Controller
 		$this->load->helper( 'url' );
         $this->load->model( 'model_auth' );
 
-        //$this->logged_in = $this->model_auth->check( TRUE );
-        //$this->template->assign( 'logged_in', $this->logged_in );
+        $this->logged_in = $this->model_auth->check( TRUE );
+        $this->template->assign( 'logged_in', $this->logged_in );
 
 		$this->lang->load( 'db_fields', 'english' ); // This is the language file
 	}
 
-    public function access_map(){
-        return array(
-            'index'=>'view',
-            'update'=>'edit'
-        );
-    }
 
     /**
      *  LISTS MODEL DATA INTO A TABLE
@@ -101,14 +95,10 @@ class Articles extends CI_Controller
 				$this->form_validation->set_rules( 'title', lang('title'), 'required|max_length[255]' );
 				$this->form_validation->set_rules( 'content', lang('content'), 'required' );
 				$this->form_validation->set_rules( 'publication_date', lang('publication_date'), 'required' );
-				$this->form_validation->set_rules( 'created', lang('created'), 'required' );
-				$this->form_validation->set_rules( 'modified', lang('modified'), 'required' );
 
 				$data_post['title'] = $this->input->post( 'title' );
 				$data_post['content'] = $this->input->post( 'content' );
 				$data_post['publication_date'] = $this->input->post( 'publication_date' );
-				$data_post['created'] = $this->input->post( 'created' );
-				$data_post['modified'] = $this->input->post( 'modified' );
 
                 if ( $this->form_validation->run() == FALSE )
                 {
@@ -174,14 +164,10 @@ class Articles extends CI_Controller
 				$this->form_validation->set_rules( 'title', lang('title'), 'required|max_length[255]' );
 				$this->form_validation->set_rules( 'content', lang('content'), 'required' );
 				$this->form_validation->set_rules( 'publication_date', lang('publication_date'), 'required' );
-				$this->form_validation->set_rules( 'created', lang('created'), 'required' );
-				$this->form_validation->set_rules( 'modified', lang('modified'), 'required' );
 
 				$data_post['title'] = $this->input->post( 'title' );
 				$data_post['content'] = $this->input->post( 'content' );
 				$data_post['publication_date'] = $this->input->post( 'publication_date' );
-				$data_post['created'] = $this->input->post( 'created' );
-				$data_post['modified'] = $this->input->post( 'modified' );
 
                 if ( $this->form_validation->run() == FALSE )
                 {

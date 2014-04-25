@@ -23,7 +23,7 @@
     <div id="container">
         <div id="header">
             <h1><a href="dashboard">Andi Application Test</a></h1>
-            {*{if $logged_in == true}
+            {if $logged_in == true}
                 <div id="user-navigation">
                     <ul class="wat-cf">
                         <li><a class="logout" href="login/logout">Logout</a></li>
@@ -35,10 +35,10 @@
                         <li><a href="dashboard">Dashboard</a></li>
                     </ul>
                 </div>
-            {/if}*}
+            {/if}
         </div>
 
-{*        {if $logged_in == true}*}
+        {if $logged_in == true}
 
         <div id="wrapper" class="wat-cf">
             <div id="main">
@@ -70,9 +70,9 @@
 
         </div><!-- wrapper -->
 
-        {*{else}
+        {else}
             {include file="form_login.tpl"}
-        {/if}*}
+        {/if}
 
     </div><!-- container -->
 </body>
