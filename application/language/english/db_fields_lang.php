@@ -22,7 +22,7 @@ $lang['modified'] = 'Modified';
   Table: Users
  * *********************** */
 $lang['id'] = '';
-$lang['role'] = '';
+$lang['role'] = 'Role';
 // 'role' has some enum values, you can name them
 $lang['superadmin'] = 'superadmin';
 $lang['admin'] = 'admin';

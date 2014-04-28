@@ -74,11 +74,11 @@ class Users extends CI_Controller
         {
             case 'GET':
                 $fields = $this->model_users->fields();
-                
-                
+                $role_options = $this->model_users->roleOptions();
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'users_fields', $fields );
+        		$this->template->assign( 'role_options', $role_options );
                 $this->template->assign( 'metadata', $this->model_users->metadata() );
         		$this->template->assign( 'table_name', 'Users' );
         		$this->template->assign( 'template', 'form_users' );
