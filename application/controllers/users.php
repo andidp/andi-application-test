@@ -69,12 +69,12 @@ class Users extends CI_Controller
     function create( $id = false )
     {
 		$this->load->library('form_validation');
+        $role_options = $this->model_users->roleOptions();
         
 		switch ( $_SERVER ['REQUEST_METHOD'] )
         {
             case 'GET':
                 $fields = $this->model_users->fields();
-                $role_options = $this->model_users->roleOptions();
                 
                 $this->template->assign( 'action_mode', 'create' );
         		$this->template->assign( 'users_fields', $fields );
@@ -114,12 +114,10 @@ class Users extends CI_Controller
                 {
                     $errors = validation_errors();
                     
-                    
-                    
-                    
               		$this->template->assign( 'errors', $errors );
               		$this->template->assign( 'action_mode', 'create' );
             		$this->template->assign( 'users_data', $data_post );
+                    $this->template->assign( 'role_options', $role_options );
             		$this->template->assign( 'users_fields', $fields );
                     $this->template->assign( 'metadata', $this->model_users->metadata() );
             		$this->template->assign( 'table_name', 'Users' );
@@ -230,4 +228,5 @@ class Users extends CI_Controller
             break;
         }
     }
+    
 }
