@@ -30,9 +30,9 @@ class Users extends CI_Controller
         $this->model_users->pagination( TRUE );
 		$data_info = $this->model_users->lister( $page );
         $fields = $this->model_users->fields( TRUE );
-        
 
         $this->template->assign( 'pager', $this->model_users->pager );
+        $this->template->assign( 'status', $this->model_users->status );
 		$this->template->assign( 'users_fields', $fields );
 		$this->template->assign( 'users_data', $data_info );
         $this->template->assign( 'table_name', 'Users' );
@@ -143,6 +143,7 @@ class Users extends CI_Controller
     function edit( $id = false )
     {
         $this->load->library('form_validation');
+        $role_options = $this->model_users->roleOptions();
 
         switch ( $_SERVER ['REQUEST_METHOD'] )
         {
@@ -154,6 +155,7 @@ class Users extends CI_Controller
           		$this->template->assign( 'action_mode', 'edit' );
         		$this->template->assign( 'users_data', $data );
         		$this->template->assign( 'users_fields', $fields );
+                $this->template->assign( 'role_options', $role_options );
                 $this->template->assign( 'metadata', $this->model_users->metadata() );
         		$this->template->assign( 'table_name', 'Users' );
         		$this->template->assign( 'template', 'form_users' );
@@ -191,6 +193,7 @@ class Users extends CI_Controller
               		$this->template->assign( 'errors', $errors );
             		$this->template->assign( 'users_data', $data_post );
             		$this->template->assign( 'users_fields', $fields );
+                    $this->template->assign( 'role_options', $role_options );
                     $this->template->assign( 'metadata', $this->model_users->metadata() );
             		$this->template->assign( 'table_name', 'Users' );
             		$this->template->assign( 'template', 'form_users' );

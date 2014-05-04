@@ -17,7 +17,7 @@ class Model_auth extends CI_Model {
     function check( $redirect = TRUE )
     {
         $udata = $this->session->userdata( 'logged_in' );
-
+        
         if( $udata['valid'] == 'yes' )
         {
             return $udata;

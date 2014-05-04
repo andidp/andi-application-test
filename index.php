@@ -177,6 +177,24 @@ if (is_dir($application_folder)) {
     define('APPPATH', BASEPATH . $application_folder . '/');
 }
 
+if (!function_exists('pr')) {
+
+/**
+ * print_r() convenience function
+ *
+ * In terminals this will act the same as using print_r() directly, when not run on cli
+ * print_r() will wrap <PRE> tags around the output of given array. Similar to debug().
+ *
+ * @param array $var Variable to print out
+ * @return void
+ */
+	function pr($var) {
+		$template = php_sapi_name() !== 'cli' ? '<pre>%s</pre>' : "\n%s\n";
+		printf($template, print_r($var, true));
+	}
+
+}
+
 /**
  * set time zone
  *

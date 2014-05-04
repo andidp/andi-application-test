@@ -16,16 +16,14 @@
                             <table class="table">
                             	<thead>
                                     <th width="20"> </th>
-                                    			<th>{$users_fields.id}</th>
-			<th>{$users_fields.role}</th>
-			<th>{$users_fields.username}</th>
-			<th>{$users_fields.email}</th>
-			<th>{$users_fields.password}</th>
-			<th>{$users_fields.user_status}</th>
-			<th>{$users_fields.token}</th>
-			<th>{$users_fields.last_login}</th>
-			<th>{$users_fields.created}</th>
-			<th>{$users_fields.updated}</th>
+                                        <th>{$users_fields.id}</th>
+                                        <th>{$users_fields.role}</th>
+                                        <th>{$users_fields.username}</th>
+                                        <th>{$users_fields.email}</th>
+                                        <th>{$users_fields.user_status}</th>
+                                        <th>{$users_fields.last_login}</th>
+                                        <th>{$users_fields.created}</th>
+                                        <th>{$users_fields.updated}</th>
 
                                     <th width="80">Actions</th>
                             	</thead>
@@ -34,15 +32,13 @@
                                         <tr class="{cycle values='odd,even'}">
                                             <td><input type="checkbox" class="checkbox" name="delete_ids[]" value="{$row.id}" /></td>
                                             				<td>{$row.id}</td>
-				<td>{$row.role}</td>
-				<td>{$row.username}</td>
-				<td>{$row.email}</td>
-				<td>{$row.password}</td>
-				<td>{$row.user_status}</td>
-				<td>{$row.token}</td>
-				<td>{$row.last_login}</td>
-				<td>{$row.created}</td>
-				<td>{$row.updated}</td>
+                                            <td>{$row.role}</td>
+                                            <td>{$row.username}</td>
+                                            <td>{$row.email}</td>
+                                            <td>{$status[$row.user_status]}</td>
+                                            <td>{$row.last_login}</td>
+                                            <td>{$row.created}</td>
+                                            <td>{$row.updated}</td>
 
                                             <td width="80">
                                                 <a href="users/show/{$row.id}"><img src="asset/images/view.png" alt="Show record" /></a>

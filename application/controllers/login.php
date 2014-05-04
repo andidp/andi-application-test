@@ -14,11 +14,12 @@ class Login extends CI_Controller
         $this->load->library('template');
         $this->load->helper('url');
 
-        $this->rootUser = 'root';
-        $this->rootPass = 'root';
+        //$this->rootUser = 'root';
+        //$this->rootPass = 'root';
 
         // Quick logged in test, if check() recieves true, then it redirects to the index page
         $this->load->model('model_auth');
+        $this->load->model('model_users');
         $this->template->assign('logged_in', $this->model_auth->check(FALSE));
     }
 
@@ -38,11 +39,17 @@ class Login extends CI_Controller
     function validate()
     {
         $user = $this->input->post('user');
-        $pass = $this->input->post('pass');
+        $pass = md5($this->input->post('pass'));
 
-        if ($this->rootUser == $user && $this->rootPass == $pass)
+        $user_data = $this->model_users->findByUniqueField('username', $user);
+        
+        //if ($this->rootUser == $user && $this->rootPass == $pass)
+        if (!empty($user_data) && $pass == $user_data['password'])
         {
-            $this->model_auth->login(array('valid' => 'yes'));
+            $valid = array('valid' => 'yes');
+            $user_valid_data = array_merge((array)$user_data, (array)$valid);
+            
+            $this->model_auth->login($user_valid_data);
             redirect(base_url() . '/dashboard');
             die();
         } else

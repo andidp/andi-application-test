@@ -6,6 +6,14 @@ if (!defined('BASEPATH'))
 class Model_users extends CI_Model
 {
 
+    /**
+     * user status
+     */
+    public $status = array(
+        'inactive',
+        'active'
+    );
+
     function __construct()
     {
         parent::__construct();
@@ -71,6 +79,11 @@ class Model_users extends CI_Model
 
     function insert($data)
     {
+        if (isset($data['password']))
+        {
+            $data['password'] = md5($data['password']);
+        }
+
         $this->db->insert('users', $data);
         return $this->db->insert_id();
     }
@@ -254,7 +267,7 @@ class Model_users extends CI_Model
         }
         return $metadata;
     }
-    
+
     /**
      * options role
      *
@@ -262,11 +275,56 @@ class Model_users extends CI_Model
     function roleOptions()
     {
         return array(
-                    'superadmin'    => 'Superadmin', 
-                    'admin'         => 'Admin', 
-                    'author'        => 'Author', 
-                    'guest'         => 'Guest'
-                );
+            'superadmin' => 'Superadmin',
+            'admin' => 'Admin',
+            'author' => 'Author',
+            'guest' => 'Guest'
+        );
+    }
+
+    /**
+     * get user data with parameter: username
+     */
+    function findByUniqueField($field, $value)
+    {
+
+        $fields = array(
+            'id', 'role', 'username', 'email', 'password',
+            'user_status', 'token', 'last_login', 'created,updated'
+        );
+
+        $select_statement = ( $this->raw_data ) ? 'id,role,username,email,password,user_status,token,last_login,created,updated' : 'id,role,username,email,password,user_status,token,last_login,created,updated';
+        $this->db->select($select_statement);
+        $this->db->from('users');
+
+        if (in_array($field, $fields))
+        {
+            $this->db->where($field, $value);
+        }
+        
+        $this->db->where('user_status', 1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0)
+        {
+            $row = $query->row_array();
+            return array(
+                'id' => $row['id'],
+                'role' => $row['role'],
+                'username' => $row['username'],
+                'email' => $row['email'],
+                'password' => $row['password'],
+                'user_status' => $row['user_status'],
+                'token' => $row['token'],
+                'last_login' => $row['last_login'],
+                'created' => $row['created'],
+                'updated' => $row['updated'],
+            );
+        } else
+        {
+            return array();
+        }
     }
 
 }

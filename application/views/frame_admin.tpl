@@ -23,6 +23,7 @@
     <div id="container">
         <div id="header">
             <h1><a href="dashboard">Andi Application Test</a></h1>
+            {pr($logged_in)}
             {if $logged_in == true}
                 <div id="user-navigation">
                     <ul class="wat-cf">

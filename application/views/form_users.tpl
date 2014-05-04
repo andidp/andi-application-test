@@ -53,7 +53,7 @@
     	<div class="group">
             <label class="label">{$users_fields.password}</label>
     		<div>
-    	       	<input class="text_field" type="text" maxlength="255" value="{if isset($users_data)}{$users_data.password}{/if}" name="password" />
+    	       	<input class="text_field" type="password" maxlength="255" value="{if isset($users_data)}{$users_data.password}{/if}" name="password" />
     		</div>
     		
     	</div>
