@@ -60,11 +60,13 @@ class Front extends CI_Controller
 
                 /* we set the rules */
                 /* don't forget to edit these */
-                $this->form_validation->set_rules('username', lang('username'), 'required|155');
+                $this->form_validation->set_rules('username', lang('username'), 'required|is_unique[users.username]|155');
                 $this->form_validation->set_rules('email', lang('email'), 'required|valid_email|is_unique[users.email]|max_length[100]');
                 $this->form_validation->set_rules('password', lang('password'), 'required|155');
 
+                /* set role as author if user register from front site */
                 $data_post['role'] = 'author';
+                
                 $data_post['username'] = $this->input->post('username');
                 $data_post['email'] = $this->input->post('email');
                 $data_post['password'] = $this->input->post('password');
