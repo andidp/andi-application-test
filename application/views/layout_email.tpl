@@ -1,15 +1,8 @@
 
     <div id="box">
       <div class="block" id="block-login">
-        <h2>Please login</h2>
+        <h2>Email konfirmasi</h2>
         <div class="content login">
-        {if isset($message)}
-            <div class="flash">
-                <div class="message error">
-                    <p>{$message}</p>
-                </div>
-            </div>
-        {/if}
 		{if isset($error)}
           <div class="flash">
             <div class="message error">
@@ -39,7 +32,6 @@
                 <button class="button" type="submit">
                   <img src="asset/backend_skins/images/icons/key.png" alt="Save" /> Login
                 </button>
-                  <a href="front/forgot_password">Forgot password ?</a>
               </div>
             </div>
           </form>

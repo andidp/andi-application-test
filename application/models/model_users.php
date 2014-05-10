@@ -90,8 +90,15 @@ class Model_users extends CI_Model
 
     function update($id, $data)
     {
+        if (isset($data['password']))
+        {
+            $data['password'] = md5($data['password']);
+        }
+        
         $this->db->where('id', $id);
-        $this->db->update('users', $data);
+        if ($this->db->update('users', $data) ){
+            return TRUE;
+        }
     }
 
     function delete($id)

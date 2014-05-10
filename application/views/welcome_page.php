@@ -77,21 +77,15 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>Welcome to Andi Application Test!</h1>
 
 	<div id="body">
-		<h2>...and also thanks for using asset.</h2>
 
 		<p>You can login to your administration area <a href="login">here</a>.</p>
+		<p>OR, You can register <a href="front/register">here</a>.</p>
 
-		<p>Please set up your database connection at</p>
-		<code>application/config/database.php</code>
-
-		<p>and don't forget to tune the config as well</p>
-		<code>application/views/config.php</code>
 	</div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 
 </body>
