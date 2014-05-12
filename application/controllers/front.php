@@ -161,7 +161,7 @@ class Front extends CI_Controller
                             $data_post['reset_url'] = "<a href='$url'>$url</a>" ;
                             
                             if ($this->sendmail->send_email(
-                                            $data_post, 'andidepe11@gmail.com', 
+                                            $data_post, 'appltestemail@gmail.com', 
                                                 'Andi Application Test Admin', 
                                                     $data_post['email'], 
                                                         'Email konfirmasi'
